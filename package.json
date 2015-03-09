@@ -1,6 +1,6 @@
 {
   "name": "fizzy",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Gulp tasks",
   "main": "index.js",
   "license": "MIT",
@@ -23,6 +23,7 @@
     "del": "^1.1.1",
     "extend": "^2.0.0",
     "gulp": "^3.8.11",
+    "gulp-header": "^1.2.2",
     "gulp-if": "^1.2.5",
     "gulp-jshint": "^1.9.0",
     "gulp-load-plugins": "^0.8.1",
