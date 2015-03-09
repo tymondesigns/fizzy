@@ -18,7 +18,7 @@ module.exports = function (gulp, plugins, options) {
             .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.init())
             .pipe(plugins.uglify(options.uglifyOptions))
             .pipe(plugins.rename({ suffix: options.minifySuffix }))
-            .pipe(plugins.if(plugins.sourcemaps.write('./')))
+            .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.write('./'))))
             .pipe(gulp.dest(options.dest));
     };
 };
