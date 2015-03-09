@@ -2,24 +2,23 @@
 
 var stylish = require('jshint-stylish');
 var extend = require('extend');
-var through = require('through2');
 
 var defaults = {
-	sourcemaps: true,
-	minifySuffix: '.min',
-	uglifyOptions: {}
+    sourcemaps: true,
+    minifySuffix: '.min',
+    uglifyOptions: {}
 };
 
 module.exports = function (gulp, plugins, options) {
-	options = extend(true, defaults, options);
+    options = extend(true, defaults, options);
 
     return function () {
         return gulp.src(options.src)
-        	.pipe(plugins.plumber({ errorHandler: options.onError }))
-        	.pipe(options.sourcemaps ? plugins.sourcemaps.init() : through.obj())
-        	.pipe(plugins.uglify(options.uglifyOptions))
+            .pipe(plugins.plumber({ errorHandler: options.onError }))
+            .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.init())
+            .pipe(plugins.uglify(options.uglifyOptions))
             .pipe(plugins.rename({ suffix: options.minifySuffix }))
-            .pipe(options.sourcemaps ? plugins.sourcemaps.write('./') : through.obj())
+            .pipe(plugins.if(plugins.sourcemaps.write('./'))
             .pipe(gulp.dest(options.dest));
     };
 };
