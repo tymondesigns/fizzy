@@ -16,9 +16,6 @@
   "scripts": {
     "test": "mocha"
   },
-  "files": [
-    "index.js"
-  ],
   "keywords": [
     "fizzy"
   ],
