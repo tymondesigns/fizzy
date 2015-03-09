@@ -2,12 +2,7 @@
 
 var gulp = require('gulp'),
 extend = require('extend'),
-plugins = require('gulp-load-plugins')({
-    requireFn: function (name) {
-        // Temporary workaround for jackfranklin/gulp-load-plugins#56
-        return require(__dirname + '/node_modules/' + name);
-    }
-});
+plugins = require('gulp-load-plugins')();
 
 // set some defaults
 var defaults = {
