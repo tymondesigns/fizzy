@@ -7,7 +7,7 @@ var defaults = {
     sourcemaps: true,
     minifySuffix: '.min',
     uglifyOptions: {},
-    header: false,
+    header: [],
 };
 
 module.exports = function (gulp, plugins, options) {
@@ -21,7 +21,7 @@ module.exports = function (gulp, plugins, options) {
             .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.init()))
             .pipe(plugins.uglify(options.uglifyOptions))
             .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.write('./')))
-            .pipe(plugins.if(options.header, plugins.header.apply(this, options.header)))
+            .pipe(plugins.if(options.header.length !== 0, plugins.header.apply(this, options.header)))
             .pipe(gulp.dest(options.dest));
     };
 };
