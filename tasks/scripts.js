@@ -16,10 +16,10 @@ module.exports = function (gulp, plugins, options) {
     return function () {
         return gulp.src(options.src)
         	.pipe(plugins.plumber({ errorHandler: options.onError }))
-        	.pipe(options.sourcemaps ? $.sourcemaps.init() : through.obj())
+        	.pipe(options.sourcemaps ? plugins.sourcemaps.init() : through.obj())
         	.pipe(plugins.uglify(options.uglifyOptions))
             .pipe(plugins.rename({ suffix: options.minifySuffix }))
-            .pipe(options.sourcemaps ? $.sourcemaps.write('./') : through.obj())
+            .pipe(options.sourcemaps ? plugins.sourcemaps.write('./') : through.obj())
             .pipe(gulp.dest(options.dest));
     };
 };
