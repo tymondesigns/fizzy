@@ -5,6 +5,7 @@ var extend = require('extend');
 
 var defaults = {
     sourcemaps: true,
+    sourcemapWriteOptions: {},
     minifySuffix: '.min',
     uglifyOptions: {},
     header: [],
@@ -20,7 +21,7 @@ module.exports = function (gulp, plugins, options) {
             .pipe(plugins.rename({ suffix: options.minifySuffix }))
             .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.init()))
             .pipe(plugins.uglify(options.uglifyOptions))
-            .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.write('./')))
+            .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.write('./', options.sourcemapWriteOptions)))
             .pipe(plugins.if(options.header.length !== 0, plugins.header.apply(this, options.header)))
             .pipe(gulp.dest(options.dest));
     };
