@@ -26,5 +26,7 @@ var task = function (name, options) {
 
 module.exports = {
     task: task,
+    plugins: plugins,
+    config: defaults,
     log: plugins.util.log
 };
