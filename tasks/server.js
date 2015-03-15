@@ -1,10 +1,10 @@
 'use strict';
 
+var extend = require('extend');
+
 var defaults = {
 	livereload: true,
-	directoryListing: true,
-	open: true,
-	fallback: 'index.html'
+	open: true
 };
 
 module.exports = function (gulp, plugins, options) {
@@ -13,6 +13,6 @@ module.exports = function (gulp, plugins, options) {
     return function () {
         return gulp.src(options.src)
         	.pipe(plugins.plumber({ errorHandler: options.onError }))
-        	.pipe(plgins.webserver(options));
+        	.pipe(plugins.webserver(options));
     };
 };
