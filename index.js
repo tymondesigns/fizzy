@@ -12,7 +12,8 @@ var defaults = {
 };
 
 var task = function (name, options) {
-    options = extend(true, defaults, options);
+
+    // options = extend(true, defaults, options);
 
     // This means that you don't have to call this.emit('end') yourself
     var actualErrorHandler = options.onError;
