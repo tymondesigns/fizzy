@@ -30,7 +30,7 @@ module.exports = function (gulp, plugins, options) {
             }
         };
 
-        if (! _.contains(linters, options.type)) {
+        if (! linters.hasOwnProperty(options.type)) {
             this.emit('error', new plugins.util.PluginError('fizzy', 'Lint type not found'));
         }
 
