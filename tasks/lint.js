@@ -1,7 +1,7 @@
 'use strict';
 
 var stylish = require('jshint-stylish');
-var extend = require('extend');
+var _ = require('lodash');
 
 var defaults = {
     dieOnError: false,
@@ -10,7 +10,7 @@ var defaults = {
 };
 
 module.exports = function (gulp, plugins, options) {
-    options = extend(true, defaults, options);
+    options = _.extend(defaults, options);
 
     return function () {
 
@@ -30,7 +30,7 @@ module.exports = function (gulp, plugins, options) {
             }
         };
 
-        if (! linters.hasOwnProperty(options.type)) {
+        if (! _.contains(linters, options.type)) {
             this.emit('error', new plugins.util.PluginError('fizzy', 'Lint type not found'));
         }
 

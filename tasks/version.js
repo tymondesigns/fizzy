@@ -1,7 +1,7 @@
 'use strict';
 
 var semver = require('semver');
-var extend = require('extend');
+var _ = require('lodash');
 
 var defaults = {
     prompt: true,
@@ -12,7 +12,7 @@ var defaults = {
 
 
 module.exports = function (gulp, plugins, options) {
-    options = extend(true, defaults, options);
+    options = _.extend(defaults, options);
 
     var promptVersion = function (currentVersion, callback) {
         return gulp.src('')
@@ -28,14 +28,16 @@ module.exports = function (gulp, plugins, options) {
                 ]
             }, function(res) {
                 var newVer;
-                if(res.bump.match(/^patch/)) {
+
+                if (res.bump.match(/^patch/)) {
                     newVer = semver.inc(currentVersion, 'patch');
                 } else if(res.bump.match(/^minor/)) {
                     newVer = semver.inc(currentVersion, 'minor');
                 } else if(res.bump.match(/^major/)) {
                     newVer = semver.inc(currentVersion, 'major');
                 }
-                if(newVer && typeof callback === 'function') {
+
+                if (newVer && _.isFunction(callback)) {
                     return callback(newVer);
                 } else {
                     return;

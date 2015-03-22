@@ -1,6 +1,6 @@
 'use strict';
 
-var extend = require('extend');
+var _ = require('lodash');
 
 var defaults = {
 	serverOptions: {
@@ -11,7 +11,7 @@ var defaults = {
 };
 
 module.exports = function (gulp, plugins, options) {
-	options = extend(true, defaults, options);
+	options = _.extend(defaults, options);
 
     return function () {
         return gulp.src(options.src)

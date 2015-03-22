@@ -1,8 +1,8 @@
 'use strict';
 
-var gulp = require('gulp'),
-extend = require('extend'),
-plugins = require('gulp-load-plugins')();
+var gulp = require('gulp');
+var plugins = require('gulp-load-plugins')();
+var _ = require('lodash');
 
 // set some defaults
 var defaults = {
@@ -13,7 +13,7 @@ var defaults = {
 
 var task = function (name, options) {
 
-    // options = extend(true, defaults, options);
+    options = _.extend(defaults, options);
 
     // This means that you don't have to call this.emit('end') yourself
     var actualErrorHandler = options.onError;
