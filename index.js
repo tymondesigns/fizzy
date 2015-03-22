@@ -13,8 +13,7 @@ var defaults = {
 
 var task = function (name, options) {
 
-    // @todo - fix this
-    // options = _.extend(defaults, options);
+    options = _.cloneDeep(_.extend(defaults, options));
 
     // This means that you don't have to call this.emit('end') yourself
     var actualErrorHandler = options.onError;
