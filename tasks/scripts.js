@@ -23,7 +23,7 @@ module.exports = function (gulp, plugins, options) {
             .pipe(gulp.dest(options.dest))
             .pipe(plugins.rename({ suffix: options.minifySuffix }))
             .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.init()))
-            .pipe(plugins.if(options.babel, plugins.babel(babelOptions)))
+            .pipe(plugins.if(options.babel, plugins.babel(options.babelOptions)))
             .pipe(plugins.uglify(options.uglifyOptions))
             .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.write(options.sourcemapDest, options.sourcemapWriteOptions)))
             .pipe(plugins.if(options.header.length !== 0, plugins.header.apply(this, options.header)))
