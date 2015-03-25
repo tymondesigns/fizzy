@@ -5,10 +5,13 @@ var _ = require('lodash');
 
 var defaults = {
     sourcemaps: true,
+    sourcemapDest: './',
     sourcemapWriteOptions: {},
     minifySuffix: '.min',
     uglifyOptions: {},
     header: [],
+    babel: false,
+    babelOptions: {}
 };
 
 module.exports = function (gulp, plugins, options) {
@@ -20,8 +23,9 @@ module.exports = function (gulp, plugins, options) {
             .pipe(gulp.dest(options.dest))
             .pipe(plugins.rename({ suffix: options.minifySuffix }))
             .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.init()))
+            .pipe(plugins.if(options.babel, plugins.babel(babelOptions)))
             .pipe(plugins.uglify(options.uglifyOptions))
-            .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.write('./', options.sourcemapWriteOptions)))
+            .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.write(options.sourcemapDest, options.sourcemapWriteOptions)))
             .pipe(plugins.if(options.header.length !== 0, plugins.header.apply(this, options.header)))
             .pipe(gulp.dest(options.dest));
     };
