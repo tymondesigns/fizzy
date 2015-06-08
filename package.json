@@ -1,6 +1,6 @@
 {
   "name": "fizzy",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Add some fizz to your gulp tasks",
   "main": "index.js",
   "license": "MIT",
