@@ -5,8 +5,8 @@ var _ = require('lodash');
 var defaults = {
     jscsOptions: {
         fix: false,
-        configFile: '.jscsrc',
-        reporter: require('jscs-stylish').path
+        configPath: '.jscsrc',
+        // reporter: require('jscs-stylish').path
     }
 };
 
