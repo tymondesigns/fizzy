@@ -3,7 +3,11 @@
 var _ = require('lodash');
 
 var defaults = {
-    fix: false
+    jscsOptions: {
+        fix: false,
+        configFile: '.jscsrc',
+        reporter: require('jscs-stylish').path
+    }
 };
 
 module.exports = function (gulp, plugins, options) {
@@ -12,7 +16,7 @@ module.exports = function (gulp, plugins, options) {
     return function () {
         return gulp.src(options.src)
             .pipe(plugins.plumber({ errorHandler: options.onError }))
-            .pipe(plugins.jscs({ fix: options.fix }))
-            .pipe(plugins.if(options.fix, gulp.dest(options.src)));
+            .pipe(plugins.jscs(options.jscsOptions))
+            .pipe(plugins.if(options.jscsOptions.fix, gulp.dest(options.src)));
     };
 }
