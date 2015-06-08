@@ -12,6 +12,7 @@ module.exports = function (gulp, plugins, options) {
     return function () {
         return gulp.src(options.src)
             .pipe(plugins.plumber({ errorHandler: options.onError }))
-            .pipe(plugins.jscs(options));
+            .pipe(plugins.jscs(options))
+            .pipe(plugins.if(options.fix, gulp.dest(options.src)));
     };
 }
