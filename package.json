@@ -1,6 +1,6 @@
 {
   "name": "fizzy",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Add some fizz to your gulp tasks",
   "main": "index.js",
   "license": "MIT",
@@ -49,7 +49,8 @@
     "jshint-stylish": "^1.0.0",
     "karma": "^0.12.31",
     "lodash": "^3.5.0",
-    "semver": "^4.3.1"
+    "semver": "^4.3.1",
+    "babel-eslint": "^3.1.23"
   },
   "devDependencies": {
     "gulp-debug": "^2.0.1",
