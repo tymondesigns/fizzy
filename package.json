@@ -27,6 +27,7 @@
     "gulp-babel": "^4.0.0",
     "gulp-bump": "^0.2.2",
     "gulp-csslint": "^0.1.5",
+    "gulp-eslint": "^0.15.0",
     "gulp-header": "^1.2.2",
     "gulp-if": "^1.2.5",
     "gulp-jscs": "^1.6.0",

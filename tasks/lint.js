@@ -22,6 +22,13 @@ module.exports = function (gulp, plugins, options) {
                     .pipe(plugins.jshint.reporter(stylish))
                     .pipe(plugins.if(options.dieOnError, plugins.jshint.reporter('fail')));
             },
+            es6: function () {
+                return gulp.src(options.src)
+                    .pipe(plugins.if(! options.dieOnError, plugins.plumber({ errorHandler: options.onError })))
+                    .pipe(plugins.eslint(options.config))
+                    .pipe(plugins.eslint.format())
+                    .pipe(plugins.if(options.dieOnError, plugins.eslint.failOnError()));
+            },
             css: function () {
                 return gulp.src(options.src)
                     .pipe(plugins.if(! options.dieOnError, plugins.plumber({ errorHandler: options.onError })))
