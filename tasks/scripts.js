@@ -16,6 +16,11 @@ var defaults = {
     sizeOptions: {
         gzip: true,
         showFiles: true
+    },
+    browserify: false,
+    browserifyOptions: {
+        read: false,
+        transform: ['babelify']
     }
 };
 
@@ -25,7 +30,7 @@ module.exports = function (gulp, plugins, options) {
     return function () {
         return gulp.src(options.src)
             .pipe(plugins.plumber({ errorHandler: options.onError }))
-            .pipe(plugins.if(options.babel, plugins.babel(options.babelOptions)))
+            .pipe(plugins.if(options.browserify, plugins.browserify(options.browserifyOptions)))
             .pipe(gulp.dest(options.dest))
             .pipe(plugins.rename({ suffix: options.minifySuffix }))
             .pipe(plugins.if(options.sourcemaps, plugins.sourcemaps.init()))
