@@ -21,7 +21,9 @@ var defaults = {
     browserifyOptions: {
         read: false,
         transform: ['babelify']
-    }
+    },
+    concat: false,
+    concatName: 'concat.js'
 };
 
 module.exports = function (gulp, plugins, options) {
@@ -30,6 +32,7 @@ module.exports = function (gulp, plugins, options) {
     return function () {
         return gulp.src(options.src)
             .pipe(plugins.plumber({ errorHandler: options.onError }))
+            .pipe(plugins.if(options.concat, plugins.concat(options.concatName)))
             .pipe(plugins.if(options.browserify, plugins.browserify(options.browserifyOptions)))
             .pipe(gulp.dest(options.dest))
             .pipe(plugins.rename({ suffix: options.minifySuffix }))

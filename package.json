@@ -1,6 +1,6 @@
 {
   "name": "fizzy",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Add some fizz to your gulp tasks",
   "main": "index.js",
   "license": "MIT",
@@ -28,6 +28,7 @@
     "gulp-babel": "^4.0.0",
     "gulp-browserify": "^0.5.1",
     "gulp-bump": "^0.2.2",
+    "gulp-concat": "^2.6.0",
     "gulp-csslint": "^0.1.5",
     "gulp-eslint": "^0.15.0",
     "gulp-header": "^1.2.2",
